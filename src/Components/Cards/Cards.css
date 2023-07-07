@@ -1,0 +1,22 @@
+.row{
+    margin-left: 20px;
+    color: rgba(255, 255, 255, 0.856);
+}
+.row h2{
+    margin-left: 20px;
+}
+
+.poster_cards{
+    display: flex;
+    padding: 20px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.poster_cards::-webkit-scrollbar{
+    display: none;
+}
+
+.card_image{
+     height: 250px;
+    margin-right: 10px;
+}

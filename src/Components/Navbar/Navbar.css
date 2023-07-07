@@ -1,0 +1,25 @@
+.navbar{
+    position: fixed;
+    height: 40px;
+    width: 100%;
+    padding-top: 15px;
+    background-color: #111;
+    justify-content: space-between;
+    display: flex;
+
+}
+.netflixlogo{
+    position: fixed;
+    left: 40px;
+    width: 80px;
+}
+.avatar{
+    border-radius: 50%;
+    position: fixed;
+    right: 10px;
+    width: 20px;
+    border-style: groove;
+    border-width: thick;
+    border-color: aliceblue;
+
+}
