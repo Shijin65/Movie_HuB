@@ -11,6 +11,7 @@
     padding: 20px;
     overflow-x: scroll;
     overflow-y: hidden;
+    text-align: center;
 }
 .poster_cards::-webkit-scrollbar{
     display: none;
@@ -20,3 +21,10 @@
      height: 250px;
     margin-right: 10px;
 }
+
+.small_card{
+    height: 150px;
+    margin-right: 10px;
+    
+}
+
