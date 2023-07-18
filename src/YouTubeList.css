@@ -1,0 +1,19 @@
+.details_card{
+    padding: 10px;
+    height: 100px;
+    cursor: pointer;
+    color: white;
+    position:sticky;
+    
+}
+.details_poster{
+    
+    scroll-behavior: smooth;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+
+}
+.details_poster::-webkit-scrollbar{display: none}
+

@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
-import {originals,action,Horror} from './url'
-import Navbar from './Components/Navbar/Navbar'
+import {originals,action,Horror, anime} from './url'
+// import Navbar from './Components/Navbar/Navbar'
 import Banner from './Components/Banner/Banner'
 import Cards from './Components/Cards/Cards'
 
@@ -9,11 +9,13 @@ import Cards from './Components/Cards/Cards'
 function App() {
   return (
     <div>
-      <Navbar/>
+      {/* <Navbar/> */}
       <Banner/>
       <Cards Url={originals}  title="Shitflix"  />
       <Cards Url={action}  title="Action" isSmall />
       <Cards Url={Horror}  title="Horror" isSmall />
+      <Cards Url={anime}  title="Anime" />
+
       
     </div>
   )
