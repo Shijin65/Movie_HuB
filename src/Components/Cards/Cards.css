@@ -1,4 +1,5 @@
 .row{
+    margin-top: -40px;
     margin-left: 20px;
     color: rgba(255, 255, 255, 0.856);
 }
@@ -34,7 +35,7 @@
     
 }
 p{
-    z-index: 10;
+    z-index: 1;
     margin-bottom: 50px;
 }
 

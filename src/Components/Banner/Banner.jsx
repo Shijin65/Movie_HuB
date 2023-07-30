@@ -6,7 +6,7 @@ import  YouTube from 'react-youtube';
 
 
 function Banner() {
-    const [Movie,setMovie]=useState()
+    const [Movie,setMovie]=useState([])
     const [movieK_Id,setmovieK_Id]=useState()
     const [Y_List,setY_List]=useState([])
 
@@ -18,9 +18,11 @@ function Banner() {
 
 useEffect(()=>{
     axios.get(`/trending/movie/week?api_key=${API_KEY}`).then((response)=>{
-      const element=Math.floor((Math.random(19)*10))
-      // console.log(element)
-         setMovie(response.data.results[element])
+     
+       const element=Math.floor((Math.random(10)*10))
+         setMovie(response.data.results[element]) 
+      
+      
         })
 },[])
 
@@ -30,7 +32,7 @@ const HandleMovie=(id)=>{
 axios.get(`/movie/${id}/videos?api_key=${API_KEY}`).then((response)=>{
   if (response.data.results.length!==0) {
     
-    setmovieK_Id(response.data.results[9])
+    setmovieK_Id(response.data.results[10])
     // console.log(movieK_Id)
     
   }

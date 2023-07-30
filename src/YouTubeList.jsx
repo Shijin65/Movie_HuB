@@ -15,7 +15,7 @@ if (Response.data.results.length!==0) {
       setList(Response.data.results)
 
 }
-  }).catch(err=>{alert('error')})
+  }).catch(err=>{alert('NO RELATED VIDEOS FOR THIS MOVIE ')})
 
   })
 
@@ -33,10 +33,10 @@ if (Response.data.results.length!==0) {
     <div className='details_row'>
           <h2 style={{color:'black' ,textAlign:'left'}}>Releated Videos</h2>
         <div className='details_poster'>
-      {List.map((obj)=>
-      <YouTube opts={opts} videoId={obj.key}/>
+
       
-)}
+      {List.map((obj)=>
+      <YouTube opts={opts} videoId={obj.key}/>)}
 
         </div>
 

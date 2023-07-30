@@ -106,12 +106,13 @@ if(moviests) {
 {/* youtube play list starts */}
 
 
-{/* youtube play list end here */}
+
 
   <YouTubeList id={movieD.id}/>
   </div>
   
         </div>}
+{/* youtube play list end here */}        
 {/* show more details*/}
         
         
