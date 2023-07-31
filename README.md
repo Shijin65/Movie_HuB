@@ -1,4 +1,6 @@
 # Movie_HuB
+
+movie-hub-sjn.netlify.app/
 Creating movie details showing site using React and The Movie Data Base[TMDB].
 
 
