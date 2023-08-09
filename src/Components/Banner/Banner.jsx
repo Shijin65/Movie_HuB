@@ -75,7 +75,7 @@ const opts = {
     <div style={{backgroundImage:`url(${Movie ? ImgUrl+Movie.backdrop_path :"" })`}}
     className='banner'>
         <div className='logo-episod'>
-            <h2 className='eps'><span className='N'>T</span>{Movie ? Movie.media_type : ""}</h2>
+            <h2 className='eps'>{Movie ? Movie.media_type : ""}<span className='N'>_H</span></h2>
         </div>
         <div className='moviename'>
           <h1>{Movie ? Movie.title :""}</h1>
@@ -88,7 +88,7 @@ const opts = {
             
         </div>
         <div className='description'>
-            <span><h2>{Movie ? Movie.original_title :''}</h2></span>
+            {/* <span><h2>{Movie ? Movie.original_title :''}</h2></span> */}
             <p>{Movie ? Movie.overview :''}</p>
         </div>
         <div className='fade_bottom'></div>
