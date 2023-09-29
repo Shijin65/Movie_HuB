@@ -17,8 +17,6 @@ function Cards(props) {
 
 useEffect(()=>{axios.get(props.Url).then((response)=>{
    setMovie(response.data.results)
-   console.log(response.data.results)
-   
   })
 },[props])
   
@@ -45,7 +43,7 @@ if(moviests) {
 
 
         {Movie.map((obj)=>
-            <div className='poster'>
+            <div className='poster' >
               
           <p id='name'>{obj.name}</p>
           <img onClick={()=>Handlemovie(obj)}  className={props.isSmall ? "small_card" : "main_card"} src={props.isSmall ?`${ImgUrl+obj.poster_path}`:`${ImgUrl+obj.backdrop_path}`} alt="moive" />
