@@ -2,7 +2,7 @@ import React , {useEffect,useState} from 'react'
 import axios from "../../constants/Axios";
 import {ImgUrl } from "../../constants/constance";
 import './Cards.css'
-import YouTubeList from '../../YouTubeList';
+import YouTubeList from '../youtube/YouTubeList';
 
 
 

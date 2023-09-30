@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
-import axios from "./constants/Axios"
-import {API_KEY} from './constants/constance'
+import axios from "../../constants/Axios"
+import {API_KEY} from '../../constants/constance'
 import './YouTubeList.css'
 import YouTube from "react-youtube";
 
