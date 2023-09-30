@@ -2,10 +2,12 @@ import React from "react";
 import "./App.css";
 // import { Tv_Series } from "./url";
 
-import Banner from "./Components/Banner/Banner";
+// import Banner from "./Components/Banner/Banner";
 import { Routes as Switch, Route } from "react-router-dom";
 import Layout from "./Components/Layout";
 import Entrance from "./Pages/Entrance";
+import Register from "./Pages/Register";
+import Login from "./Pages/Login";
 
 
 function App() {
@@ -17,7 +19,9 @@ function App() {
 
     <Switch>
         <Route path="/"Component={Entrance}/>
-        <Route path="/register" Component={Banner}/>
+        <Route path="/login" Component={Login}/>
+        <Route path="/register" Component={Register}/>
+
     </Switch>
 </Layout>
     </div>

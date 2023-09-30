@@ -21,7 +21,7 @@ useEffect(()=>{
      
        const element=Math.floor((Math.random(10)*10))
          setMovie(response.data.results[element]) 
-      
+        
       
         })
 },[])
