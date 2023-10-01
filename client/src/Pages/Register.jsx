@@ -6,7 +6,7 @@ import AuthContext from "../Context/Authcontext";
 
 
 function Register() {
-
+ 
   const { RegisterUser } = useContext(AuthContext)
   const [Movie, setMovie] = useState([]);
   const [userData, setuserData] = useState({
@@ -29,34 +29,35 @@ function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     RegisterUser({ ...userData, confirmpassword: "" })
+    
+    
   }
 
   return (
-    <div className="bg-cover bg-center  bg-black h-full object-cover ">
-      <section class="">
-        <div class="container h-full px-6 py-24 ">
-          <div class=" p-4 g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
+    <div className="bg-cover bg-center dark:bg-gradient-to-r from-blue-950 to-black  bg-black h-full object-cover ">
+      <section className="">
+        <div className="container h-full px-6 py-24 ">
+          <div className=" p-4 g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
             {/* <!-- Left column container with background--> */}
-            <div class="mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
+            <div className="mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
               <img
                 src={`${ImgUrl + Movie.backdrop_path}`}
-                class="w-full"
-                alt="Phoneimage"
+                className="w-full"
+                alt="movieimage"
               />
             </div>
 
             {/* <!-- Right column container with form --> */}
-            <div class="md:w-8/12 lg:ml-6 lg:w-5/12">
+            <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
               <h2 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
                 REGISTER{" "}
                 <span className="text-blue-600 dark:text-blue-500">HERE</span>
               </h2>
               <form onSubmit={handleSubmit}>
                 {/* user name */}
-                <div class="relative mb-6" data-te-input-wrapper-init>
-                  <label for="exampleFormControlInput3" class="">
+                <div className="relative mb-6" data-te-input-wrapper-init>
+                  <label for="exampleFormControlInput3" className="">
                     Name
                   </label>
                   <input
@@ -64,15 +65,15 @@ function Register() {
                     className="peer block min-h-[auto] w-full rounded border-2 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-500 [&:not([data-te-input-placeholder-active])]"
                     name="username"
                     id="username"
-                    placeholder="Email address"
+                    placeholder="user name ..."
                     value={userData.username}
                     onChange={onchangeHandle}
 
                   />
                 </div>
                 {/* <!-- Email input --> */}
-                <div class="relative mb-6" data-te-input-wrapper-init>
-                  <label for="exampleFormControlInput3" class="">
+                <div className="relative mb-6" data-te-input-wrapper-init>
+                  <label for="exampleFormControlInput3" className="">
                     Email address
                   </label>
                   <input
@@ -88,13 +89,13 @@ function Register() {
                 </div>
 
                 {/* <!-- Password input --> */}
-                <div class="relative mb-6" data-te-input-wrapper-init>
-                  <label for="Password" class="">
+                <div className="relative mb-6" data-te-input-wrapper-init>
+                  <label for="Password" className="">
                     Password
                   </label>
                   <input
                     type="password"
-                    class="peer block min-h-[auto] w-full rounded border-2 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-500 [&:not([data-te-input-placeholder-active])]"
+                    className="peer block min-h-[auto] w-full rounded border-2 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-500 [&:not([data-te-input-placeholder-active])]"
                     id="Password"
                     name="password"
                     placeholder="Password"
@@ -104,10 +105,10 @@ function Register() {
                 </div>
 
                 {/* <!-- Remember me checkbox --> */}
-                <div class="mb-6 flex  ">
-                  <div class="mb-[0.125rem] block min-h-[1.5rem] ">
+                <div className="mb-6 flex  ">
+                  <div className="mb-[0.125rem] block min-h-[1.5rem] ">
                     <label
-                      class="inline-block  hover:cursor-pointer"
+                      className="inline-block  hover:cursor-pointer"
                       for="exampleCheck3"
                     >
                       Already have an account?
@@ -117,7 +118,7 @@ function Register() {
                   {/* <!-- Forgot password link --> */}
                   <a
                     href="/login"
-                    class="dark:text-blue-500"
+                    className="dark:text-blue-500"
                   >
                     login?
                   </a>
@@ -126,7 +127,7 @@ function Register() {
                 {/* <!-- Submit button --> */}
                 <button
                   type="submit"
-                  class="inline-block w-full rounded dark:text-blue-500 hover:bg-blue-500 hover:text-white px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-lg shadow-blue-500 border-x hover:shadow-md hover:shadow-white"
+                  className="inline-block w-full rounded dark:text-blue-500 hover:bg-blue-500 hover:text-white px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-lg shadow-blue-500 border-x hover:shadow-md hover:shadow-white"
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
