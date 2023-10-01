@@ -2,25 +2,23 @@ import React, { useContext, useEffect, useState } from "react";
 import { API_KEY, ImgUrl } from "../constants/constance";
 import axios from "../constants/Axios";
 import AuthContext from "../Context/Authcontext";
-
-
+import { Link } from "react-router-dom";
 
 function Login() {
- 
-  const { RegisterUser } = useContext(AuthContext)
+  const { LoginUser } = useContext(AuthContext);
   const [Movie, setMovie] = useState([]);
   const [userData, setuserData] = useState({
     email: "",
     password: "",
-
   });
+
   useEffect(() => {
     axios.get(`/trending/movie/week?api_key=${API_KEY}`).then((response) => {
       const element = Math.floor(Math.random(10) * 10);
       setMovie(response.data.results[element]);
-      console.log(response.data.results[element]);
     });
   }, []);
+
   const onchangeHandle = (event) => {
     const { name, value } = event.target;
     setuserData({ ...userData, [name]: value });
@@ -28,13 +26,11 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    RegisterUser({ ...userData, confirmpassword: "" })
-    
-    
-  }
+    LoginUser(userData);
+  };
 
   return (
-    <div className="bg-cover bg-center dark:bg-gradient-to-r from-red-950 to-black  bg-black h-full object-cover ">
+    <div className="bg-cover bg-center dark:bg-gradient-to-r from-red-950 to-black  bg-black h-screen object-cover ">
       <section className="">
         <div className="container h-full px-6 py-24 ">
           <div className=" p-4 g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
@@ -50,11 +46,10 @@ function Login() {
             {/* <!-- Right column container with form --> */}
             <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
               <h2 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-                LOGIN  {"  "} 
+                LOGIN {"  "}
                 <span className="text-blue-600 dark:text-red-600">HERE</span>
               </h2>
               <form onSubmit={handleSubmit}>
-                
                 {/* <!-- Email input --> */}
                 <div className="relative mb-6" data-te-input-wrapper-init>
                   <label for="exampleFormControlInput3" className="">
@@ -68,7 +63,6 @@ function Login() {
                     placeholder="Email address"
                     value={userData.email}
                     onChange={onchangeHandle}
-
                   />
                 </div>
 
@@ -99,13 +93,10 @@ function Login() {
                     </label>
                   </div>
 
-                  {/* <!-- Forgot password link --> */}
-                  <a
-                    href="/login"
-                    className="dark:text-blue-500"
-                  >
-                    login?
-                  </a>
+                  {/* <!-- register link --> */}
+                  <Link to={"/register"}>
+                    <p className="dark:text-red-500">Register?</p>
+                  </Link>
                 </div>
 
                 {/* <!-- Submit button --> */}
@@ -128,4 +119,4 @@ function Login() {
   );
 }
 
-export default Login
+export default Login;
