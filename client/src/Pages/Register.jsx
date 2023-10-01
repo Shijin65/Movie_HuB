@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { API_KEY, ImgUrl } from "../constants/constance";
 import axios from "../constants/Axios";
+import AuthContext from "../Context/Authcontext";
+
+
 
 function Register() {
+
+  const { RegisterUser } = useContext(AuthContext)
   const [Movie, setMovie] = useState([]);
   const [userData, setuserData] = useState({
     username: "",
     email: "",
     password: "",
-    
+
   });
   useEffect(() => {
     axios.get(`/trending/movie/week?api_key=${API_KEY}`).then((response) => {
@@ -19,9 +24,14 @@ function Register() {
   }, []);
   const onchangeHandle = (event) => {
     const { name, value } = event.target;
-    console.log(event.target)
     setuserData({ ...userData, [name]: value });
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    RegisterUser({ ...userData, confirmpassword: "" })
+  }
 
   return (
     <div className="bg-cover bg-center  bg-black h-full object-cover ">
@@ -43,7 +53,7 @@ function Register() {
                 REGISTER{" "}
                 <span className="text-blue-600 dark:text-blue-500">HERE</span>
               </h2>
-              <form>
+              <form onSubmit={handleSubmit}>
                 {/* user name */}
                 <div class="relative mb-6" data-te-input-wrapper-init>
                   <label for="exampleFormControlInput3" class="">
@@ -56,7 +66,7 @@ function Register() {
                     id="username"
                     placeholder="Email address"
                     value={userData.username}
-                    onChange={onchangeHandle} 
+                    onChange={onchangeHandle}
 
                   />
                 </div>
@@ -72,7 +82,7 @@ function Register() {
                     id="email"
                     placeholder="Email address"
                     value={userData.email}
-                    onChange={onchangeHandle} 
+                    onChange={onchangeHandle}
 
                   />
                 </div>
@@ -89,12 +99,12 @@ function Register() {
                     name="password"
                     placeholder="Password"
                     value={userData.password}
-                    onChange={onchangeHandle} 
+                    onChange={onchangeHandle}
                   />
                 </div>
-              
+
                 {/* <!-- Remember me checkbox --> */}
-                <div class="mb-6 flex items-center justify-between">
+                <div class="mb-6 flex  ">
                   <div class="mb-[0.125rem] block min-h-[1.5rem] ">
                     <label
                       class="inline-block  hover:cursor-pointer"
@@ -107,7 +117,7 @@ function Register() {
                   {/* <!-- Forgot password link --> */}
                   <a
                     href="/login"
-                    class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+                    class="dark:text-blue-500"
                   >
                     login?
                   </a>
@@ -116,7 +126,7 @@ function Register() {
                 {/* <!-- Submit button --> */}
                 <button
                   type="submit"
-                  class="inline-block w-full rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                  class="inline-block w-full rounded dark:text-blue-500 hover:bg-blue-500 hover:text-white px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-lg shadow-blue-500 border-x hover:shadow-md hover:shadow-white"
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
@@ -133,4 +143,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Register
