@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { API_KEY, ImgUrl } from "../constants/constance";
 import axios from "../constants/Axios";
 import AuthContext from "../Context/Authcontext";
-
+import { Link } from "react-router-dom";
 
 
 function Register() {
- 
+  
   const { RegisterUser } = useContext(AuthContext)
   const [Movie, setMovie] = useState([]);
   const [userData, setuserData] = useState({
@@ -116,12 +116,10 @@ function Register() {
                   </div>
 
                   {/* <!-- Forgot password link --> */}
-                  <a
-                    href="/login"
-                    className="dark:text-blue-500"
-                  >
+                  <Link to={"/login"}>
+                  <p className="dark:text-blue-500" >
                     login?
-                  </a>
+                  </p></Link>
                 </div>
 
                 {/* <!-- Submit button --> */}
