@@ -9,7 +9,7 @@ import Entrance from "./Pages/Entrance";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import { AuthContextprovider } from "./Context/Authcontext";
-
+import { ToastContextProvider } from "./Context/Toastcontext";
 
 
 
@@ -17,7 +17,8 @@ import { AuthContextprovider } from "./Context/Authcontext";
 function App() {
   return (
     <div>
-      <Layout>
+      <ToastContextProvider><Layout>
+
         <AuthContextprovider>
           <Switch>
             <Route path="/" Component={Entrance} />
@@ -25,7 +26,8 @@ function App() {
             <Route path="/register" Component={Register} />
           </Switch>
         </AuthContextprovider>
-      </Layout>
+
+      </Layout></ToastContextProvider>
     </div>
   );
 }
