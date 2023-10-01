@@ -1,11 +1,12 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
+import ToastContext from "./Toastcontext";
 
 
 const AuthContext = createContext();
 
 export const AuthContextprovider = ({ children }) => {
 
-
+  const {Toast}=useContext(ToastContext)
   const RegisterUser = async (userData) => {
     console.log(userData)
 
@@ -22,11 +23,12 @@ export const AuthContextprovider = ({ children }) => {
 
       if (!userres.error) {
         console.log("everything is fine");
-      }else{
+        Toast.success("registeration success")
+      } else {
         console.log(userres.error)
       }
-      
-     
+
+
     } catch (error) {
 
     }

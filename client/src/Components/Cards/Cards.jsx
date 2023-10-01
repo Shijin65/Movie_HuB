@@ -83,11 +83,11 @@ if(moviests) {
 
 {/* rating star  */}
           <h4>Rating : {movieD.vote_average}<span style={{color:'grey'}}>({movieD.vote_count})</span></h4>
-        <div class="star-ratings">
-        <div class="fill-ratings" style={{width:`${movieD.vote_average*10}%` }} >
+        <div className="star-ratings">
+        <div className="fill-ratings" style={{width:`${movieD.vote_average*10}%` }} >
         <span>★★★★★</span>
         </div>
-        <div class="empty-ratings">
+        <div className="empty-ratings">
         <span>★★★★★</span>
         </div>
         </div><br/><br/>
