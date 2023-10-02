@@ -33,4 +33,10 @@ const Registeruser = asyncHanler( async(req,res)=>{
     
 
 } )
-module.exports ={ Registeruser }
+
+const LoginUser = asyncHanler( async(req,res)=>{
+
+
+})
+
+module.exports ={ Registeruser,LoginUser }
