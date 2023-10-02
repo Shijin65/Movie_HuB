@@ -1,7 +1,5 @@
 import React from 'react'
-// import './Navbar.css'
-
-
+import { Link } from "react-router-dom";
 
 function Navbar() {
  
@@ -12,8 +10,8 @@ function Navbar() {
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-2  text-white text-base">
-          <li><a href='/login'>Login</a></li>
-          <li><a href='/register'>Register</a></li>
+          <li><Link to={"/login"} >Login</Link></li>
+          <li><Link to={'/register'}>Register</Link></li>
         </ul>
         <div class="avatar placeholder">
           <div class="bg-slate-500  text-white rounded-full w-12">
