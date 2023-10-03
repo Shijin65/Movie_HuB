@@ -1,7 +1,7 @@
 .banner{
     background-size: cover;
     justify-self: center;
-    padding-top: 10%;
+    
     background-position: center top;
     background-blend-mode: multiply;
 }
@@ -83,10 +83,10 @@
     width: 100%;
 }
 .fade_bottom{
-    margin-top: -10%;
+    
     justify-content: flex-start;
     display: flex;
-    height: 10vh;
+    height: 5vh;
     background-image: linear-gradient(rgba(255, 0, 0, 0), rgb(0, 0, 0));
     /* background-color: aliceblue; */
 }

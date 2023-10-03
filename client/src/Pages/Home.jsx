@@ -1,11 +1,14 @@
 import React, { useContext } from 'react'
 import AuthContext from '../Context/Authcontext'
+import Banner from '../Components/Banner/Banner'
 
 function Home() {
     const{user}=useContext(AuthContext)
-    console.log(user)
+    
   return (
-    <div>Home</div>
+    <>
+   <Banner/>
+    </>
   )
 }
 
