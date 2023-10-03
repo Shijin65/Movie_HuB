@@ -10,6 +10,7 @@ import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import { AuthContextprovider } from "./Context/Authcontext";
 import { ToastContextProvider } from "./Context/Toastcontext";
+import Home from "./Pages/Home";
 
 
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/" Component={Entrance} />
             <Route path="/login" Component={Login} />
             <Route path="/register" Component={Register} />
+            <Route path="/Home" Component={Home} />
           </Switch>
         </AuthContextprovider>
 

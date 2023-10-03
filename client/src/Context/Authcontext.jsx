@@ -1,6 +1,6 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import ToastContext from "./Toastcontext";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -8,6 +8,55 @@ export const AuthContextprovider = ({ children }) => {
 
   const Navigate = useNavigate();
   const { toast } = useContext(ToastContext);
+  const[user,setUser] =useState(null)
+  const location = useLocation();
+
+
+  useEffect(() => {
+    // setToken(localStorage.getItem("auth"))
+    setUser(JSON.parse(localStorage.getItem("user")))
+    
+    currentUser();
+  },[])
+  
+// CURRENT USER ........................................................
+
+const currentUser = async () => {
+
+  try {
+    const res = await fetch(`http://localhost:8001/api/user/current`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${localStorage.getItem("auth")}` },
+    })
+    const userres = await res.json();
+    // console.log(userres)
+    if (!userres.error) {
+
+      if (location.pathname == "/login" || location.pathname == "/register") {
+        Navigate("/home", { replace: true })
+        toast.success(`welcome back MR. ${userres.username}`)
+      } else {
+        Navigate(location.pathname ? location.pathname : "/")
+      }
+
+      console.log(userres)
+
+    } else {
+      console.log(userres.error)
+      toast.error("please login")
+      localStorage.clear();
+      Navigate("/", { replace: true })
+      setUser(null)
+    }
+
+
+  } catch (error) {
+    toast.error("server not responding")
+    toast.error(error)
+    console.log(error)
+  }
+}
+
 
   //REGISTER USER ........................................................
 
@@ -44,27 +93,35 @@ export const AuthContextprovider = ({ children }) => {
 
     console.log(userData)
     try {
-      // const res = await fetch("http://localhost:8001/api/user/login", {
-      //   method: "POST",
-      //   headers: {
-      //     "content-type": "application/json",
-      //   },
-      //   body: JSON.stringify(userData),
-      // });
+      const res = await fetch("http://localhost:8001/api/user/login", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
 
-      // const userres = await res.json();
+      const userres = await res.json(); 
+      if(!userres.error){
+        localStorage.setItem("auth",userres.accesstoken);
+        localStorage.setItem("user",JSON.stringify(userres.user));
+        setUser(userres.user);
+       
+        toast.success(`welcome to home page MR: ${userres.user.username}`);
+        Navigate("/home",{replace :true});
+
+      }else{
+        toast.error(userres.error)
+      }
     } catch (error) {
-      
+      console.log(error)
     }
   }
 
-
-
-
-  //CURRENT USER ........................................................
+  
 
   return (
-    <AuthContext.Provider value={{ RegisterUser ,LoginUser }}>
+    <AuthContext.Provider value={{ RegisterUser ,LoginUser ,user}}>
       {children}
     </AuthContext.Provider>
   );

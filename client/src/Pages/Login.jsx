@@ -26,7 +26,7 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    LoginUser(userData);
+    LoginUser({...userData});
   };
 
   return (

@@ -61,7 +61,8 @@ const LoginUser = asyncHanler(async (req, res) => {
         );
         res.status(200).json({ accesstoken, user });
     } else {
-        console.log(user);
+        res.status(401).json( {error:"check the email and password "} );
+    throw new Error("auth error")
     }
 });
 const CurrentUser = asyncHanler(async (req, res) => {})

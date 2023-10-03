@@ -8,12 +8,13 @@ import { Link } from "react-router-dom";
 function Register() {
   
   const { RegisterUser } = useContext(AuthContext)
+  // console.log(User)
   const [Movie, setMovie] = useState([]);
   const [userData, setuserData] = useState({
     username: "",
     email: "",
     password: "",
-
+  
   });
   useEffect(() => {
     axios.get(`/trending/movie/week?api_key=${API_KEY}`).then((response) => {
@@ -21,6 +22,8 @@ function Register() {
       setMovie(response.data.results[element]);
       console.log(response.data.results[element]);
     });
+
+    
   }, []);
   const onchangeHandle = (event) => {
     const { name, value } = event.target;
@@ -29,7 +32,7 @@ function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    RegisterUser({ ...userData, confirmpassword: "" })
+    RegisterUser({ ...userData})
     
     
   }
