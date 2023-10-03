@@ -65,7 +65,10 @@ const LoginUser = asyncHanler(async (req, res) => {
     throw new Error("auth error")
     }
 });
-const CurrentUser = asyncHanler(async (req, res) => {})
+const CurrentUser = asyncHanler(async (req, res) => {
+    res.status(200).json(req.user);
+  res.end();
+})
 
 
 module.exports = { Registeruser, LoginUser, CurrentUser };
