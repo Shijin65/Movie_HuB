@@ -72,7 +72,12 @@
         /* padding-bottom: 5%; */
         text-shadow: 2px 2px 2px rgba(36, 0, 0, 0.628);  
 }
-
+.newcard{
+    max-height: 55vh;
+}
+.newcard::-webkit-scrollbar{
+    display:none;
+}
 .description h2{
     text-shadow: rgba(0, 0, 0, 0.466) 0px 5px 15px;
     text-transform: uppercase;

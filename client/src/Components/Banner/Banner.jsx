@@ -3,15 +3,21 @@ import "./Banner.css";
 import axios from "../../constants/Axios";
 import { API_KEY, ImgUrl } from "../../constants/constance";
 import YouTube from "react-youtube";
+import Newcard from "../Newcard";
 
 function Banner() {
   const [Movie, setMovie] = useState([]);
   const [movieK_Id, setmovieK_Id] = useState();
   const [Y_List, setY_List] = useState([]);
-
+  const [Movies, setMovies] = useState([])
   useEffect(() => {
+    // axios.get(props.Url).then((response)=>{
+    //   setMovie(response.data.results)
+    //  })
     axios.get(`/trending/movie/week?api_key=${API_KEY}`).then((response) => {
       const element = Math.floor(Math.random(10) * 10);
+      setMovies(response.data.results)
+      
       setMovie(response.data.results[element]);
     });
   }, []);
@@ -54,10 +60,10 @@ function Banner() {
         style={{
           backgroundImage: `url(${Movie ? ImgUrl + Movie.backdrop_path : ""})`,
         }}
-        className="banner h-half"
+        className="banner h-half "
       >
         <div className="flex justify-between ">
-          <div className="mt-20">
+          <div className="mt-20 basis-1/2">
             <div className="logo-episod w-screen absolute">
               <h2 className="eps">
                 {Movie ? Movie.media_type : ""}
@@ -90,7 +96,17 @@ function Banner() {
             </div>
           </div>
           </div>
-          <div className="container bg-white w-96 h-4/6  right-1 top-1 "></div>
+          <div className="newcard flex-col container w-2/6   right-1 top-1 overflow-y-scroll gap-5  basis-1/2">
+
+           {Movies.map((movie)=>
+           
+           <Newcard movie={movie}/>
+            
+
+           )}
+           
+              
+          </div>
         </div>
 
         <div className="fade_bottom"></div>
