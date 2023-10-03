@@ -64,5 +64,7 @@ const LoginUser = asyncHanler(async (req, res) => {
         console.log(user);
     }
 });
+const CurrentUser = asyncHanler(async (req, res) => {})
 
-module.exports = { Registeruser, LoginUser };
+
+module.exports = { Registeruser, LoginUser, CurrentUser };
