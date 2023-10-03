@@ -3,21 +3,15 @@ import "./Banner.css";
 import axios from "../../constants/Axios";
 import { API_KEY, ImgUrl } from "../../constants/constance";
 import YouTube from "react-youtube";
-import Newcard from "../Newcard";
 
 function Banner() {
   const [Movie, setMovie] = useState([]);
   const [movieK_Id, setmovieK_Id] = useState();
   const [Y_List, setY_List] = useState([]);
-  const [Movies, setMovies] = useState([])
+
   useEffect(() => {
-    // axios.get(props.Url).then((response)=>{
-    //   setMovie(response.data.results)
-    //  })
     axios.get(`/trending/movie/week?api_key=${API_KEY}`).then((response) => {
       const element = Math.floor(Math.random(10) * 10);
-      setMovies(response.data.results)
-      
       setMovie(response.data.results[element]);
     });
   }, []);
@@ -60,56 +54,58 @@ function Banner() {
         style={{
           backgroundImage: `url(${Movie ? ImgUrl + Movie.backdrop_path : ""})`,
         }}
-        className="banner h-half "
+        className="bg-cover   flex-col justify-center text-center pt-32  "
       >
-        <div className="flex justify-between ">
-          <div className="mt-20 basis-1/2">
+            
             <div className="logo-episod w-screen absolute">
               <h2 className="eps">
                 {Movie ? Movie.media_type : ""}
                 <span className="N">_H</span>
               </h2>
-            </div>
-            <div className="moviename mt-5 uppercase">
-              <h1 className="text-6xl">{Movie ? Movie.title : ""}</h1>
+            
             </div>
 
+            <div className="moviename mt-20 uppercase text-white">
+              <h1 className="text-6xl ">{Movie ? Movie.title : ""}</h1>
+            </div> 
+            
+
+            <div className="mt-20 pb-24">
+            <button className="btn">Description</button>
+            <button
+                className="btn  glass  text-white ms-5"
+                onClick={() => HandleMovielist(Movie.id)}>Show Details</button>
+            </div>
+            <div className="fade_bottom"></div>
+
+
+
+        {/* <div className="flex justify-between  ">
+          <div className="mt-20 basis-1/2">
+            
+            
+
             <div className="buttons">
-              {/* <button className="btn" onClick={() => HandleMovie(Movie.id)}>
-                Play
-              </button> */}
+             
               <button
                 className="btn  glass  text-white ms-5"
                 onClick={() => HandleMovielist(Movie.id)}>Show Details</button>
             </div>
-            
-             <div className="collapse bg-transparent ms-8">
-            <input type="checkbox" /> 
-            <div className="collapse-title text-xl font-medium">
-             <button className="btn">Description</button> 
-            </div>
-            <div className="collapse-content">
-              <div className="description">
-              {/* <span><h2>{Movie ? Movie.original_title :''}</h2></span> */}
-              <p>{Movie ? Movie.overview : ""}</p>
-            </div>
+
+            <div className="collapse bg-transparent ms-8">
+              <input type="checkbox" />
+              <div className="collapse-title text-xl font-medium">
+                <button className="btn">Description</button>
+              </div>
+              <div className="collapse-content">
+                <div className="">
+                  <p>{Movie ? Movie.overview : ""}</p>
+                </div>
+              </div>
             </div>
           </div>
-          </div>
-          <div className="newcard flex-col container w-2/6   right-1 top-1 overflow-y-scroll gap-5  basis-1/2">
-
-           {Movies.map((movie)=>
-           
-           <Newcard movie={movie}/>
-            
-
-           )}
-           
-              
-          </div>
-        </div>
-
-        <div className="fade_bottom"></div>
+        </div> */}
+        
       </div>
 
       <div className="row">
