@@ -5,58 +5,46 @@ import { useLocation, useNavigate } from "react-router-dom";
 const AuthContext = createContext();
 
 export const AuthContextprovider = ({ children }) => {
-
   const Navigate = useNavigate();
   const { toast } = useContext(ToastContext);
-  const[user,setUser] =useState(null)
+  const [user, setUser] = useState(null);
   const location = useLocation();
 
-
-  useEffect(() => {
-    // setToken(localStorage.getItem("auth"))
-    setUser(JSON.parse(localStorage.getItem("user")))
-    
-    currentUser();
-  },[])
+useEffect(()=>{
   
-// CURRENT USER ........................................................
+  setUser(JSON.parse(localStorage.getItem("user")));
+  currentUser();
+},[])
+  // CURRENT USER ........................................................
 
-const currentUser = async () => {
-
-  try {
-    const res = await fetch(`http://localhost:8001/api/user/current`, {
-      method: "GET",
-      headers: { Authorization: `Bearer ${localStorage.getItem("auth")}` },
-    })
-    const userres = await res.json();
-    // console.log(userres)
-    if (!userres.error) {
-
-      if (location.pathname == "/login" || location.pathname == "/register") {
-        Navigate("/home", { replace: true })
-        toast.success(`welcome back MR. ${userres.username}`)
+  const currentUser = async () => {
+    try {
+      const res = await fetch(`http://localhost:8001/api/user/current`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${localStorage.getItem("auth")}` },
+      });
+      const userres = await res.json();
+      // console.log(userres)
+      if (!userres.error) {
+        if (location.pathname === "/login" || location.pathname === "/register") {
+          Navigate("/home", { replace: true });
+          toast.success(`welcome back MR. ${userres.username}`);
+        } else {
+          Navigate(location.pathname ? location.pathname : "/");
+        }
       } else {
-        Navigate(location.pathname ? location.pathname : "/")
+        console.log(userres.error);
+        toast.error("please login");
+        localStorage.clear();
+        Navigate("/", { replace: true });
+        setUser(null);
       }
-
-      console.log(userres)
-
-    } else {
-      console.log(userres.error)
-      toast.error("please login")
-      localStorage.clear();
-      Navigate("/", { replace: true })
-      setUser(null)
+    } catch (error) {
+      toast.error("server not responding");
+      toast.error(error);
+      console.log(error);
     }
-
-
-  } catch (error) {
-    toast.error("server not responding")
-    toast.error(error)
-    console.log(error)
-  }
-}
-
+  };
 
   //REGISTER USER ........................................................
 
@@ -71,11 +59,8 @@ const currentUser = async () => {
         },
         body: JSON.stringify(userData),
       });
-
       const userres = await res.json();
-
       if (!userres.error) {
-        console.log("everything is fine");
         toast.success("registeration success");
         Navigate("/login", { replace: true });
       } else {
@@ -89,9 +74,8 @@ const currentUser = async () => {
 
   //LOGIN USER ........................................................
 
-  const LoginUser = async(userData) => {
-
-    console.log(userData)
+  const LoginUser = async (userData) => {
+    console.log(userData);
     try {
       const res = await fetch("http://localhost:8001/api/user/login", {
         method: "POST",
@@ -101,27 +85,23 @@ const currentUser = async () => {
         body: JSON.stringify(userData),
       });
 
-      const userres = await res.json(); 
-      if(!userres.error){
-        localStorage.setItem("auth",userres.accesstoken);
-        localStorage.setItem("user",JSON.stringify(userres.user));
+      const userres = await res.json();
+      if (!userres.error) {
+        localStorage.setItem("auth", userres.accesstoken);
+        localStorage.setItem("user", JSON.stringify(userres.user));
         setUser(userres.user);
-       
-        toast.success(`welcome to home page MR: ${userres.user.username}`);
-        Navigate("/home",{replace :true});
-
-      }else{
-        toast.error(userres.error)
+        toast.success(`welcome home ${userres.user.username}`);
+        Navigate("/home", { replace: true });
+      } else {
+        toast.error(userres.error);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
-
-  
+  };
 
   return (
-    <AuthContext.Provider value={{ RegisterUser ,LoginUser ,user}}>
+    <AuthContext.Provider value={{ RegisterUser, LoginUser, user ,setUser }}>
       {children}
     </AuthContext.Provider>
   );

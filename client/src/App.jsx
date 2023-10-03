@@ -12,24 +12,21 @@ import { AuthContextprovider } from "./Context/Authcontext";
 import { ToastContextProvider } from "./Context/Toastcontext";
 import Home from "./Pages/Home";
 
-
-
-
 function App() {
   return (
     <div>
-      <ToastContextProvider><Layout>
-
+      <ToastContextProvider>
         <AuthContextprovider>
-          <Switch>
-            <Route path="/" Component={Entrance} />
-            <Route path="/login" Component={Login} />
-            <Route path="/register" Component={Register} />
-            <Route path="/Home" Component={Home} />
-          </Switch>
+          <Layout>
+            <Switch>
+              <Route path="/" Component={Entrance} />
+              <Route path="/login" Component={Login} />
+              <Route path="/register" Component={Register} />
+              <Route path="/Home" Component={Home} />
+            </Switch>
+          </Layout>{" "}
         </AuthContextprovider>
-
-      </Layout></ToastContextProvider>
+      </ToastContextProvider>
     </div>
   );
 }
