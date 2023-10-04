@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Banner.css";
 import axios from "../../constants/Axios";
 import { API_KEY, ImgUrl } from "../../constants/constance";
 import YouTube from "react-youtube";
-
+import Authcontext from "../../Context/Authcontext"
+import { Link } from "react-router-dom";
 function Banner() {
+  const {user}=useContext(Authcontext)
   const [Movie, setMovie] = useState([]);
   const [movieK_Id, setmovieK_Id] = useState();
   const [Y_List, setY_List] = useState([]);
 
   useEffect(() => {
+    
     axios.get(`/trending/movie/week?api_key=${API_KEY}`).then((response) => {
       const element = Math.floor(Math.random(10) * 10);
       setMovie(response.data.results[element]);
@@ -54,7 +57,7 @@ function Banner() {
         style={{
           backgroundImage: `url(${Movie ? ImgUrl + Movie.backdrop_path : ""})`,
         }}
-        className="bg-cover   flex-col justify-center text-center pt-32  "
+        className="bg-center bg-cover  flex-col justify-center text-center pt-32  "
       >
             
             <div className="logo-episod w-screen absolute">
@@ -66,18 +69,32 @@ function Banner() {
             </div>
 
             <div className="moviename mt-20 uppercase text-white">
-              <h1 className="text-6xl ">{Movie ? Movie.title : ""}</h1>
+              <h1 className=" md:text-6xl text-xl ">{Movie ? Movie.title : ""}</h1>
             </div> 
             
 
-            <div className="mt-20 pb-24">
+
+          {user ?
+          
+          <div className="mt-20 pb-24">
             <button className="btn">Description</button>
             <button
                 className="btn  glass  text-white ms-5"
                 onClick={() => HandleMovielist(Movie.id)}>Show Details</button>
             </div>
-            <div className="fade_bottom"></div>
-
+            
+          
+          :
+          <div className="mt-20 pb-24">
+            <Link to={"/login"}><button className="btn">Login</button></Link>
+            <Link to={"/register"}><button
+                className="btn  glass  text-white ms-5"
+                onClick={() => HandleMovielist(Movie.id)}>Register</button></Link>
+            </div>
+          
+          }
+            
+        <div className="fade_bottom"></div>
 
 
         {/* <div className="flex justify-between  ">
