@@ -57,7 +57,7 @@ function Banner() {
         style={{
           backgroundImage: `url(${Movie ? ImgUrl + Movie.backdrop_path : ""})`,
         }}
-        className="bg-center bg-cover  flex-col justify-center text-center pt-32  "
+        className="bg-center-top bg-cover  flex-col justify-center text-center pt-32  "
       >
             
             <div className="logo-episod w-screen absolute">
