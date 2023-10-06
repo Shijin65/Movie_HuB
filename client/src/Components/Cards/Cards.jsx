@@ -3,7 +3,6 @@ import axios from "../../constants/Axios";
 import { ImgUrl } from "../../constants/constance";
 // import './Cards.css'
 // import YouTubeList from "../youtube/YouTubeList";
-import {API_KEY} from '../../constants/constance'
 import ToastContext from "../../Context/Toastcontext";
 import Modal from "../Modal";
 
@@ -11,6 +10,7 @@ function Cards(props) {
   const{toast}=useContext(ToastContext)
   const [Movies, setMovies] = useState([]);
   const [movieD, setMovieD] = useState([]);
+  const [movieid, setMovieid] = useState([]);
   const [moviests, setmoviests] = useState(false);
 
   useEffect(() => {
@@ -28,12 +28,9 @@ function Cards(props) {
   }, [props]);
 
   const HandleMovie=(movieid)=>{
-    axios.get(`/movie/968051?api_key=e6dd726638ba906047a65a8beb8cb3ba`).then((response) => {
-      // setMovieD(response.data.results);
-      console.log(response.data.results)
-    });
-
-    console.log(movieD)
+    setmoviests(!moviests)
+    setMovieid(movieid)
+    // console.log(movieid)
     
   };
 
@@ -77,7 +74,7 @@ function Cards(props) {
       </div>
       {/* row of posters end */}
 
-      {/* <Modal selected={}  /> */}
+      {moviests?<Modal id={movieid}  setmoviests={setmoviests} />:""}
 
       {/* rating star end  */}
     </div>

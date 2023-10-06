@@ -39,7 +39,7 @@ function Navbar() {
                 </form>
                 {/*  */}
                 <div
-                  class="avatar placeholder"
+                  className="avatar placeholder"
                   style={{
                     display: "flex",
                     justifyContent: "center",
@@ -48,7 +48,7 @@ function Navbar() {
                 >
                   <div
                     tabIndex={0}
-                    class="bg-sky-950 text-white rounded-full w-20"
+                    className="bg-sky-950 text-white rounded-full w-20"
                   >
                     <span>{avatarLetter}</span>
                   </div>
@@ -74,10 +74,10 @@ function Navbar() {
             </dialog>
 
             <div className="dropdown dropdown-end">
-              <div class="avatar placeholder ">
+              <div className="avatar placeholder ">
                 <div
                   tabIndex={0}
-                  class=" bg-sky-950  text-white rounded-full w-12"
+                  className=" bg-sky-950  text-white rounded-full w-12"
                 >
                   <span>{avatarLetter}</span>
                 </div>

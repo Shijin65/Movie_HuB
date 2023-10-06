@@ -13,7 +13,7 @@ function Home() {
   return (
     <>
       <Banner />
-      <Cards Url={originals} title="NEW RELEASE💫" />
+      {/* <Cards Url={originals} title="NEW RELEASE💫" /> */}
       <Cards Url={action} title="ACTION MOVIES💫" />
       <Cards Url={Horror} title="HORROR💫" isSmall />
 
