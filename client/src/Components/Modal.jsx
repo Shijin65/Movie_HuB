@@ -100,17 +100,19 @@ function Modal(props) {
                 {movieD.production_companies ?
                   <div>
                     <h2 className="font-mono text-white text-center text-xl underline mt-5">Production Companies</h2>
-                    <img className="h-20 md:h-16 mt-3 shadow-sm shadow-white" src={`${ImgUrl + movieD.production_companies[0].logo_path}`} alt="obj poster" />
+                    <img className="h-20 md:h-16 mt-3 shadow-sm shadow-white bg-white" src={`${ImgUrl + movieD.production_companies[0].logo_path}`} alt="obj poster" />
                   </div>
 
                   : ""}
               </div>
-
+                  
             </div>
-
+                  
 
           </div>
-
+                <div className="text-center">
+                    <button className="btn glass">Show Related videos</button>
+                  </div>
 
           <div className="modal-action">
             <form method="dialog">

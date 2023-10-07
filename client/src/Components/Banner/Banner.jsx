@@ -5,11 +5,13 @@ import { API_KEY, ImgUrl } from "../../constants/constance";
 import YouTube from "react-youtube";
 import Authcontext from "../../Context/Authcontext"
 import { Link } from "react-router-dom";
+import Modal from "../Modal";
 function Banner() {
   const {user}=useContext(Authcontext)
   const [Movie, setMovie] = useState([]);
   const [movieK_Id, setmovieK_Id] = useState();
   const [Y_List, setY_List] = useState([]);
+  const [moviests, setmoviests] = useState(false);
 
   useEffect(() => {
     
@@ -77,10 +79,10 @@ function Banner() {
           {user ?
           
           <div className="mt-20 pb-24">
-            <button className="btn">Description</button>
+            <button className="btn" onClick={()=>setmoviests(!moviests)}>Details</button>
             <button
                 className="btn  glass  text-white ms-5"
-                onClick={() => HandleMovielist(Movie.id)}>Show Details</button>
+                onClick={() => HandleMovielist(Movie.id)}>Related Videos</button>
             </div>
             
           
@@ -96,7 +98,7 @@ function Banner() {
             
         <div className="fade_bottom"></div>
 
-
+            {moviests?<Modal id={Movie.id}  setmoviests={setmoviests}/>:""}
         {/* <div className="flex justify-between  ">
           <div className="mt-20 basis-1/2">
             
