@@ -16,23 +16,22 @@ function Youtube(props) {
             if (response.data.results.length !== 0) {
                 document.getElementById('Yvideos').showModal();
               const results =(response.data.results)
-              results.map((data)=>{
-                setlist(data.key)
+              setlist(results)
+              // results.map((data)=>{
+              //   setlist(data.key)
                 
-              })
+              // })
             }else{
                 toast.error("no related video for this movie")
             }
           });
     }
-        
+        console.log(list)
     const opts = {
-   
         height: '250',
         
         playerVars: {
           autoplay: 0,
-          
         },
       };
     
@@ -42,12 +41,18 @@ function Youtube(props) {
                     <button className="btn outline glass"onClick={()=>showvideos()}>Related videos</button>
                   </div>
 <dialog id="Yvideos" className="modal">
-  <div className="modal-box w-11/12 max-w-5xl">
-    
-    {/* {list.map((obj)=>{
-        console.log(obj)
-    })} */}
-      
+
+  <div className="modal-box w-11/12 max-w-5xl ">
+    <form method="dialog">
+        {/* if there is a button, it will close the modal */}
+        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">X</button>
+      </form>
+    <div className='flex gap-5 overflow-x-scroll no-scrollbar '>
+    {list.map((obj)=>
+      // console.log(obj.key)
+        <YouTube videoId={obj.key} opts={opts} />
+    )}
+      </div>
     <div className="modal-action">
       <form method="dialog">
         {/* if there is a button, it will close the modal */}

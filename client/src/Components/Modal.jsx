@@ -79,7 +79,7 @@ function Modal(props) {
 
                 {/* Budget and revenue */}
 
-                <div className=" flex justify-between p-5 rounded-lg bg-primary text-primary-content mb-4 ">
+                <div className=" flex justify-between p-5 rounded-lg bg-primary text-primary-content mb-3 ">
 
                   <div className="   text-xl">
                     <div className=" ">Budget</div>
@@ -95,7 +95,7 @@ function Modal(props) {
 
                 {/* Budget and revenue */}
                 <div>
-                  <h2 className="font-mono text-white text-center text-xl underline mt-5">Over View</h2>
+                  <h2 className="font-mono text-white text-center text-xl underline mt-3">Over View</h2>
                   <p>{movieD.overview}</p>
                 </div>
 
@@ -105,7 +105,7 @@ function Modal(props) {
                 {movieD.production_companies ?
                   <div>
                     <h2 className="font-mono text-white text-center text-xl underline mt-5">Production Companies</h2>
-                    <img className="h-20 md:h-16 mt-3 shadow-sm shadow-white bg-white" src={`${ImgUrl + movieD.production_companies[0].logo_path}`} alt="obj poster" />
+                    <img className="h-20 md:h-16 mt-2 shadow-sm shadow-white bg-white" src={`${ImgUrl + movieD.production_companies[0].logo_path}`} alt="obj poster" />
                   </div>
                   : ""}
               </div>

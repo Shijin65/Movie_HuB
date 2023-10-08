@@ -14,12 +14,11 @@ function Banner() {
   const [moviests, setmoviests] = useState(false);
 
   useEffect(() => {
-    
     axios.get(`/trending/movie/week?api_key=${API_KEY}`).then((response) => {
       const element = Math.floor(Math.random(10) * 10);
       setMovie(response.data.results[element]);
     });
-  }, []);
+  },[]);
 
   // const HandleMovie = (id) => {
   //   axios.get(`/movie/${id}/videos?api_key=${API_KEY}`).then((response) => {
