@@ -21,14 +21,14 @@ function Banner() {
     });
   }, []);
 
-  const HandleMovie = (id) => {
-    axios.get(`/movie/${id}/videos?api_key=${API_KEY}`).then((response) => {
-      if (response.data.results.length !== 0) {
-        setmovieK_Id(response.data.results[10]);
-        // console.log(movieK_Id)
-      }
-    });
-  };
+  // const HandleMovie = (id) => {
+  //   axios.get(`/movie/${id}/videos?api_key=${API_KEY}`).then((response) => {
+  //     if (response.data.results.length !== 0) {
+  //       setmovieK_Id(response.data.results[10]);
+  //       // console.log(movieK_Id)
+  //     }
+  //   });
+  // };
 
   const HandleMovielist = (id) => {
     axios
@@ -59,7 +59,7 @@ function Banner() {
         style={{
           backgroundImage: `url(${Movie ? ImgUrl + Movie.backdrop_path : ""})`,
         }}
-        className="bg-center-top bg-cover  flex-col justify-center text-center pt-32  "
+        className="banner  bg-cover  flex-col justify-center text-center pt-32  w-screen"
       >
             
             <div className="logo-episod w-screen absolute">
@@ -88,7 +88,7 @@ function Banner() {
           
           :
           <div className="mt-20 pb-24">
-            <Link to={"/login"}><button className="btn">Login</button></Link>
+            <Link to={"/login"}><button className="btn hover:bg-white">Login</button></Link>
             <Link to={"/register"}><button
                 className="btn  glass  text-white ms-5"
                 onClick={() => HandleMovielist(Movie.id)}>Register</button></Link>
@@ -131,7 +131,7 @@ function Banner() {
         <div className="poster_cards">
           {Y_List.map((movieData) => (
             <div className="row">
-              <YouTube id="ylist" videoId={movieData.key} />
+              <YouTube id="ylist" videoId={movieData.key}  />
             </div>
           ))}
         </div>

@@ -13,7 +13,7 @@ const [List, setList] = useState([])
     // console.log(Response.data.results.length)
 if (Response.data.results.length!==0) {
       setList(Response.data.results)
-
+      console.log(Response.data.results)
 }
   }).catch(err=>{alert('NO RELATED VIDEOS FOR THIS MOVIE ')})
 
@@ -35,8 +35,10 @@ if (Response.data.results.length!==0) {
         <div className='details_poster'>
 
       
-      {List.map((obj)=>
-      <YouTube opts={opts} videoId={obj.key}/>)}
+      {/* {List.map((obj)=>
+      
+      <YouTube opts={opts} videoId={obj.key}/>
+      )} */}
 
         </div>
 

@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { ImgUrl } from "../constants/constance";
 import { API_KEY } from "../constants/constance";
 import axios from "../constants/Axios";
+import Youtube from "./Youtube";
 function Modal(props) {
   const [movieD, setMovieD] = useState([]);
+
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(`/movie/${props.id}?api_key=${API_KEY}`);
@@ -12,8 +15,10 @@ function Modal(props) {
     fetchData();
 
     document.getElementById("movie_modal").showModal();
-  }, [props]);
-  console.log(movieD);
+  }, [props.id]);
+
+
+
 
   return (
     <div className="text-white">
@@ -102,7 +107,6 @@ function Modal(props) {
                     <h2 className="font-mono text-white text-center text-xl underline mt-5">Production Companies</h2>
                     <img className="h-20 md:h-16 mt-3 shadow-sm shadow-white bg-white" src={`${ImgUrl + movieD.production_companies[0].logo_path}`} alt="obj poster" />
                   </div>
-
                   : ""}
               </div>
                   
@@ -110,9 +114,7 @@ function Modal(props) {
                   
 
           </div>
-                <div className="text-center">
-                    <button className="btn glass">Show Related videos</button>
-                  </div>
+             
 
           <div className="modal-action">
             <form method="dialog">
@@ -128,7 +130,9 @@ function Modal(props) {
               </button>
             </form>
           </div>
+        <Youtube id={props.id}/> 
         </div>
+
       </dialog>
     </div>
   );

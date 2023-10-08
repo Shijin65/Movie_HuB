@@ -38,7 +38,7 @@ function Register() {
   }
 
   return (
-    <div className="bg-cover bg-center dark:bg-gradient-to-r from-blue-950 to-black  bg-black h-full object-cover ">
+    <div className="bg-cover bg-center dark:bg-gradient-to-r from-blue-950 to-black object-cover h-screen ">
       <section className="">
         <div className="container h-full px-6 py-24 ">
           <div className=" p-4 g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">

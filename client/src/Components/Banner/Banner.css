@@ -2,7 +2,9 @@
     background-size: cover;
     justify-self: center;
     
-    background-position: center top;
+    background-position: center;
+    background-position: top;
+
     background-blend-mode: multiply;
 }
 .logo-episod{
