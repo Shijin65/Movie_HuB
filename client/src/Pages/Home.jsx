@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 // import AuthContext from '../Context/Authcontext'
 import Banner from "../Components/Banner/Banner";
 import Cards from "../Components/Cards/Cards";
-import { originals, action, Horror } from "../url";
+import { originals, action, Horror, Adventure, family, ScienceFiction } from "../url";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../Context/Authcontext";
 
@@ -28,10 +28,13 @@ useEffect(()=>{
       {more ? (
         <>
           <Cards Url={action} title="ACTION MOVIES💫" isSmall />
-          <Cards Url={Horror} title="HORROR💫" isSmall />
+          <Cards Url={Adventure} title="HORROR💀" isSmall />
+          <Cards Url={family} title="family👪" isSmall />
+          <Cards Url={ScienceFiction} title="ScienceFiction🔭" isSmall />
+
           <div className="flex justify-center my-5">
           <button
-            className="btn glass  "
+            className="btn glass"
             onClick={() => {
               handleMore();
             }}
