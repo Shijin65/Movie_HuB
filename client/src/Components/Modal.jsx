@@ -3,6 +3,7 @@ import { ImgUrl } from "../constants/constance";
 import { API_KEY } from "../constants/constance";
 import axios from "../constants/Axios";
 import Youtube from "./Youtube";
+import CircleLoader from "react-spinners/CircleLoader";
 function Modal(props) {
   const [movieD, setMovieD] = useState([]);
 
@@ -36,10 +37,12 @@ function Modal(props) {
               ✕
             </button>
           </form>
+          
+          {movieD.backdrop_path ?<>
           <h1 className="font-serif text-white text-center text-xl md:text-6xl uppercase my-5">{movieD.title}</h1>
           <div className="flex flex-col md:flex-row gap-5">
             <div className="img_container basis-1/2 ">
-              <img src={`${ImgUrl + movieD.backdrop_path}`} alt="obj poster" />
+              {ImgUrl + movieD.backdrop_path?<img src={`${ImgUrl + movieD.backdrop_path}`} alt="obj poster" />:<CircleLoader color="#36d7b7"/>}
 
               <div className="stats shadow ">
                 <div className="flex flex-col sm:flex-row ">
@@ -105,7 +108,7 @@ function Modal(props) {
                 {movieD.production_companies ?
                   <div>
                     <h2 className="font-mono text-white text-center text-xl underline mt-5">Production Companies</h2>
-                    <img className="h-20 md:h-16 mt-2 shadow-sm shadow-white bg-white" src={`${ImgUrl + movieD.production_companies[0].logo_path}`} alt="obj poster" />
+                    {movieD.production_companies.length!==0?<img className="h-20 md:h-16 mt-2 shadow-sm shadow-white bg-white" src={`${ImgUrl + movieD.production_companies[0].logo_path}`} alt="obj poster" />:""}
                   </div>
                   : ""}
               </div>
@@ -114,7 +117,8 @@ function Modal(props) {
                   
 
           </div>
-             
+          </> : <div className="flex justify-center items-center"><CircleLoader color="#36d7b7" /></div>  }
+          
 
           <div className="modal-action">
             <form method="dialog">

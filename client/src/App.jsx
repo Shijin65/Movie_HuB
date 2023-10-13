@@ -32,20 +32,4 @@ function App() {
 }
 
 export default App;
-// {/* <Cards Url={originals}  title="Shitflix"  /> */}
-// {/* <Cards Url={action}  title="Action" isSmall /> */}
-// {/* <Cards Url={Horror}  title="Horror" isSmall /> */}
-// <div
-//   className="button_container"
-//   style={{ textAlign: "center", marginBottom: "20px" }}
-// >
-//   <button
-//     className="button"
-//     onClick={() => {
-//       setstate(!state);
-//     }}
-//   >
-//     show more
-//   </button>
-// </div>
-// {state && <Cards Url={Tv_Series} title="Tv Series" />}
+

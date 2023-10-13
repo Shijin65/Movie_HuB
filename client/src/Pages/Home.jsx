@@ -14,7 +14,7 @@ useEffect(()=>{
   if (!user) {
     Navigate("/login",{replace:true})
   }
-})
+},[])
   const handleMore = () => {
     setMore(!more);
   };
