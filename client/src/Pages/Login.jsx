@@ -89,7 +89,7 @@ function Login() {
                       className="inline-block  hover:cursor-pointer"
                       for="exampleCheck3"
                     >
-                      Already have an account?
+                      Don't have an account?
                     </label>
                   </div>
 
