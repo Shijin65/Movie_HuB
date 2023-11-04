@@ -7,6 +7,7 @@ import { Routes as Switch, Route } from "react-router-dom";
 import Layout from "./Components/Layout";
 import Entrance from "./Pages/Entrance";
 import Register from "./Pages/Register";
+
 import Login from "./Pages/Login";
 import { AuthContextprovider } from "./Context/Authcontext";
 import { ToastContextProvider } from "./Context/Toastcontext";
